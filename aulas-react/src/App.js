@@ -168,6 +168,7 @@
 //         numero: 0
 //     }
 
+//---------- ex 1
 
 //     //contador ilimitado
 //     // adicionar =() =>{
@@ -182,7 +183,7 @@
 //     //     })
 //     // }
 
-
+//---------- ex 2
 
 //     //contador limitado
 //     // adicionar = () => {
@@ -220,109 +221,164 @@
 
 ///exempo 2 
 
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class ContadorAutomatizado extends Component {
+// class ContadorAutomatizado extends Component {
 
-    state = {
-        numero: 0,
-        msg: "oi",
-        nome:"Oi"
-    }
+//     state = {
+//         numero: 0,
+//         msg: "oi",
+//         nome: "Oi"
+//     }
 
-//   contador limitado
-    adicionar = () => {
-        if (this.state.numero < 10) {
-            this.setState({
-                numero: this.state.numero + 1
-            })
-        }
-    }
+//     //   contador limitado
+//     adicionar = () => {
+//         if (this.state.numero < 10) {
+//             this.setState({
+//                 numero: this.state.numero + 1
+//             })
+//         }
+//     }
 
 
-    remover = () => {
-        if (this.state.numero > 0) {
-            this.setState({
-                numero: this.state.numero - 1
-            })
-        }
+//     remover = () => {
+//         if (this.state.numero > 0) {
+//             this.setState({
+//                 numero: this.state.numero - 1
+//             })
+//         }
 
-    }
+//     }
 
+
+// MÉTODOS DE CICLOS DE VIDA ---------------------------------
 
     //component didMount - pré renderiza algo depois de renderizar  index.html
 
     // componentDidMount(){
-    //     document.title = this.state.msg
+    //     document.title = "Baro"
     // }
 
-// component didUpdate -- atualiza quando algun dado é atualizado, ele observa se tem alguma mudança e executa uma funcao
-// componentDidUpdate(){
-//     document.title = this.state.numero
+    // component didUpdate -- atualiza quando algun dado é atualizado, ele observa se tem alguma mudança e executa uma funcao
+    // componentDidUpdate(){
+    //     document.title = this.state.numero
+    // }
 
+
+    // setInterval() - método que chama uma funçao em um intervalo de tempo trabalha em milissegundos, se repete, 1s = 1000 2s = 2000
+    // setInterval(() => {acao},{tempo}) 
+    // iniciar = () => {
+    //     const parar = setInterval(() => {
+    //         this.setState({
+    //             numero: this.state.numero + 1
+    //         })
+    //     }, 1000);
+    //     this.parar = () => {
+    //         clearInterval(parar)
+    //     }
+    // }
+
+    //---------
+    //clearInterval () é um método que para a execução do setInterval
+    //necessario criar uma variavel para interligar a funcao iniciar..
+    // dentro da função o clearInterval
+//pq a variavel const - essa variável vai receber uma função, então por padrão a gente guarda ela dentro de uma const, pra não ter algum tipo de bug dps..
+
+    // const parar =  setInterval(()=>{
+    //     this.setState({
+    //     numero:this.state.numero +1
+    // })},1000);
+    // this.parar = () => {
+    //     clearInterval(parar)
+    // }
+
+    // // ---------
+
+    // // Boatao resetar
+    // resetar = () => {
+    //     this.setState({
+    //         numero: 0
+    //     })
+    // }
+
+    //exemplo mudando a cor da body apos 2s e adiconando valor na prop nome
+    //setTimeOut: executa funcao depois de um tempo determinado, nao se repete
+//     teste = () => {
+//         setTimeout(() => {
+//             document.body.style.backgroundColor = "orange"
+//             this.setState({
+//                 nome: "Jésus"
+//             })
+//         }, 2000)
+//     }
+
+//     render() {
+//         return (
+//             <>
+//                 <h1> {this.state.numero} </h1>
+//                 {/*  o numero exibido precisa ser chamado através do estate  */}
+//                 {/* <button onClick={this.adicionar}>Adicionar</button> */}
+//                 {/* <button onClick={this.remover}>Remover</button> */}
+//                 <button onClick={this.iniciar}>Iniciar</button>
+//                 <button onClick={this.parar}>Parar</button>
+//                 <button onClick={this.resetar}>Reset</button>
+
+//                 <h2>{this.state.nome}</h2>
+//                 <button onClick={this.teste}>SetTimeOut Body</button>
+
+//             </>
+//         )
+//     }
 // }
+// export default ContadorAutomatizado;
+
+//NÃO REVISADO
+//------------------------------------------------------------
+//S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
+//------------------------------------------------------------
+
+//AULA 01/03
+//stylist component
+//https://styled-components.com/
+//https://codesandbox.io/s/01-03-noite-fotdnb?file=/src/App.js
+//https://community.revelo.com/5-motivos-para-usar-styled-components/
+
+// codigo prara instalar npm install --save styled-components
+
+import React, {Component} from 'react';
+import styled from "styled-components"
+
+// criar uma const com o nome da tag (btn) = style.tag do btn
+const Btn = styled.button
+ `
+width: 32vw;
+heigth : 20vh
+`
+const BoxBtn = styled.div`
+border: solid red;
+width: 100vw
+
+`
+class App extends Component{
 
 
-// =====================
 
-// setInterval() - método que chama uma funçao em um intervalo de tempo
-// setInterval(() => {acao},{tempo})
-iniciar = () => {
-  const parar =  setInterval(()=>{
-        this.setState({
-        numero:this.state.numero +1
-    })},1000);
-    this.parar = () => {
-        clearInterval(parar)
+    state = {
+                numero: 0,
+                msg: "oi",
+                nome: "Oi"
+            }
+
+
+
+    render(){
+        return(
+            <BoxBtn>
+            <h2> {this.state.msg}</h2>
+<Btn> SetTimeOut</Btn>
+
+            </BoxBtn>
+        )
     }
-}
-
-//clearInterval () é um método que para o método setInterval
-//necessario criar uma variavel para interligar a funcao iniciar..
-// dentro da função o clearInterval
-// const parar =  setInterval(()=>{
-//     this.setState({
-//     numero:this.state.numero +1
-// })},1000);
-// this.parar = () => {
-//     clearInterval(parar)
-// // }
-
-resetar =() =>{
-    this.setState({
-        numero:0
-    })
-}
-
-
-//exemplo mudando a cor da body apos 2s e adiconando valor na prop nome
-//setTimeOut: executa funcao depois de um tempo determinado
-
-teste = () =>{
-    setTimeout(()=>{
-        document.body.style.backgroundColor = "orange"
-        this.setState({
-nome: "Jésus"
-        })
-    },2000)}
-
-
-        render(){
-            return (
-                <>
-                    <h1> {this.state.numero} </h1>
-                    {/*  o numero exibido precisa ser chamado através do estate  */}
-                    {/* <button onClick={this.adicionar}>Adicionar</button> */}
-                    {/* <button onClick={this.remover}>Remover</button> */}
-                    <button onClick={this.iniciar}>Iniciar</button>
-                    <button onClick={this.parar}>Parar</button>
-                    <button onClick={this.resetar}>Reset</button>
-
-                    <h2>{this.state.nome}</h2>
-                    <button onClick={this.teste}>Teste Body</button>
-
-                </>
-            )
-        }
-    }
-export default ContadorAutomatizado;
+};
+export default App
