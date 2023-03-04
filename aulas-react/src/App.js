@@ -336,49 +336,219 @@
 //------------------------------------------------------------
 //S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
 //------------------------------------------------------------
-
 //AULA 01/03
+
+// import React, { Component } from "react";
+
+// class App extends Component {
+//   state = {
+//     numero: 0
+//   };
+
+//   add = () => {
+//     this.setState({
+//       numero: this.state.numero + 1
+//     });
+//   };
+
+//   remover = () => {
+//     this.setState({
+//       numero: this.state.numero - 1
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <>
+//         <h2> {this.state.numero} </h2>
+//         <button onClick={this.add}> + </button>
+//         <button onClick={this.remover}> - </button>
+//       </>
+//     );
+//   }
+// }
+// export default App;
+
+//------------
+
+// import React, { Component } from "react";
+// import "./styles.css";
+
+// import styled from "styled-components";
+// //É uma biblioteca do react que nos permite criar componentes de estilo.
+
+// //Criei uma const com o nome que dei para a minha tag (Btn) = styled.tag do Btn = button ``
+// const Btn = styled.button`
+//   width: 15vw;
+//   height: 7vh;
+//   font-size: 1.5rem;
+//   background-color: orange;
+// `;
+
+// const BoxBtn = styled.div`
+//   display: flex;
+//   justify-content: space-evenly;
+//   width: 100%;
+// `;
+
+// const Ttl = styled.h2`
+//   font-size: 5rem;
+//   text-align: center;
+// `;
+
+// class App extends Component {
+//   state = {
+//     numero: 0,
+//     msg: "Boa noite!"
+//   };
+
+//   //setInterval: é um método que chama uma função de quanto em quanto tempo.
+//   //clearInterval: é um método que para o setInterval
+//   //setTimieout: é um método que executa uma função depois de um determinado tempo.
+
+//   iniciar = () => {
+//     const parar = setInterval(() => {
+//       this.setState({
+//         numero: this.state.numero + 1
+//       });
+//     }, 1000);
+
+//     this.parar = () => {
+//       clearInterval(parar);
+//     };
+//   };
+
+//   teste = () => {
+//     setTimeout(() => {
+//       //document.body.style.backgroundColor = "pink";
+//       this.setState({
+//         msg: "Hora de Jantar!!"
+//       });
+//     }, 2000);
+//   };
+
+//   //component didmount:  Deixa algo pré renderizado. É mostrado após o render()
+
+//   componentDidMount() {
+//     document.title = this.state.msg;
+//   }
+
+//   //component didUpdate: se atualiza sempre que acontecer alguma atualização.
+
+//   componentDidUpdate() {
+//     document.title = this.state.msg;
+//   }
+
+//   render() {
+//     return (
+//       <>
+//         <Ttl> {this.state.numero} </Ttl>
+
+//         <BoxBtn>
+//           <Btn onClick={this.iniciar}> Iniciar </Btn>
+//           <Btn onClick={this.parar}> Parar </Btn>
+//         </BoxBtn>
+
+//         <div>
+//           <Ttl> {this.state.msg} </Ttl>
+//           <Btn onClick={this.teste}> SETTIMEOUT </Btn>
+//           <h1 className="title"> Oi </h1>
+//         </div>
+//       </>
+//     );
+//   }
+// }
+// export default App;
+
+
+//--------------------------
+
 //stylist component
 //https://styled-components.com/
 //https://codesandbox.io/s/01-03-noite-fotdnb?file=/src/App.js
 //https://community.revelo.com/5-motivos-para-usar-styled-components/
 
-// codigo prara instalar npm install --save styled-components
+// codigo prara instalar--  npm install --save styled-components
 
-import React, {Component} from 'react';
-import styled from "styled-components"
+// import React, {Component} from 'react';
+// import styled from "styled-components"
 
-// criar uma const com o nome da tag (btn) = style.tag do btn
-const Btn = styled.button
- `
-width: 32vw;
-heigth : 20vh
+// // criar uma const com o nome da tag (btn) = style.tag do btn
+// const Btn = styled.button
+//  `
+// width: 32vw;
+// heigth : 20vh
+// `
+// const BoxBtn = styled.div`
+// border: solid red;
+// width: 100vw
+
+// `
+// class App extends Component{
+
+
+
+//     state = {
+//                 numero: 0,
+//                 msg: "oi",
+//                 nome: "Oi"
+//             }
+
+
+
+//     render(){
+//         return(
+//             <BoxBtn>
+//             <h2> {this.state.msg}</h2>
+// <Btn> SetTimeOut</Btn>
+
+//             </BoxBtn>
+//         )
+//     }
+// };
+// export default App
+
+//NÃO REVISADO
+//------------------------------------------------------------
+//S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
+//------------------------------------------------------------
+//AULA 03/03
+import React, { Component } from 'react';
+import styled from "styled-components";
+
+const Btn = styled.button`
+background-color:  green;
 `
-const BoxBtn = styled.div`
-border: solid red;
-width: 100vw
-
-`
-class App extends Component{
-
-
+class Contador2 extends Component {
 
     state = {
-                numero: 0,
-                msg: "oi",
-                nome: "Oi"
-            }
-
-
-
-    render(){
-        return(
-            <BoxBtn>
-            <h2> {this.state.msg}</h2>
-<Btn> SetTimeOut</Btn>
-
-            </BoxBtn>
-        )
+        numero: 0,
+        msg: "oi",
+        nome: "Oi"
     }
-};
-export default App
+
+    //   contador limitado
+    adicionar = () => {
+        if (this.state.numero < 10) {
+            this.setState({
+                numero: this.state.numero + 1
+            })
+        };
+
+        // remover = () => {
+        //     if (this.state.numero > 0) {
+        //         this.setState({
+        //             numero: this.state.numero + 1
+        //         })
+        //     }
+    }
+    render(){
+                return(
+                   <div>
+                   <h1> {this.state.numero}</h1>
+                   <Btn onClick={this.adicionar}> + </Btn>
+                   <Btn> + </Btn>
+                   </div>
+                )
+            }
+}export default Contador2
