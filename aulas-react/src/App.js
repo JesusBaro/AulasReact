@@ -253,56 +253,56 @@
 
 // MÉTODOS DE CICLOS DE VIDA ---------------------------------
 
-    //component didMount - pré renderiza algo depois de renderizar  index.html
+//component didMount - pré renderiza algo depois de renderizar  index.html
 
-    // componentDidMount(){
-    //     document.title = "Baro"
-    // }
+// componentDidMount(){
+//     document.title = "Baro"
+// }
 
-    // component didUpdate -- atualiza quando algun dado é atualizado, ele observa se tem alguma mudança e executa uma funcao
-    // componentDidUpdate(){
-    //     document.title = this.state.numero
-    // }
+// component didUpdate -- atualiza quando algun dado é atualizado, ele observa se tem alguma mudança e executa uma funcao
+// componentDidUpdate(){
+//     document.title = this.state.numero
+// }
 
 
-    // setInterval() - método que chama uma funçao em um intervalo de tempo trabalha em milissegundos, se repete, 1s = 1000 2s = 2000
-    // setInterval(() => {acao},{tempo}) 
-    // iniciar = () => {
-    //     const parar = setInterval(() => {
-    //         this.setState({
-    //             numero: this.state.numero + 1
-    //         })
-    //     }, 1000);
-    //     this.parar = () => {
-    //         clearInterval(parar)
-    //     }
-    // }
+// setInterval() - método que chama uma funçao em um intervalo de tempo trabalha em milissegundos, se repete, 1s = 1000 2s = 2000
+// setInterval(() => {acao},{tempo}) 
+// iniciar = () => {
+//     const parar = setInterval(() => {
+//         this.setState({
+//             numero: this.state.numero + 1
+//         })
+//     }, 1000);
+//     this.parar = () => {
+//         clearInterval(parar)
+//     }
+// }
 
-    //---------
-    //clearInterval () é um método que para a execução do setInterval
-    //necessario criar uma variavel para interligar a funcao iniciar..
-    // dentro da função o clearInterval
+//---------
+//clearInterval () é um método que para a execução do setInterval
+//necessario criar uma variavel para interligar a funcao iniciar..
+// dentro da função o clearInterval
 //pq a variavel const - essa variável vai receber uma função, então por padrão a gente guarda ela dentro de uma const, pra não ter algum tipo de bug dps..
 
-    // const parar =  setInterval(()=>{
-    //     this.setState({
-    //     numero:this.state.numero +1
-    // })},1000);
-    // this.parar = () => {
-    //     clearInterval(parar)
-    // }
+// const parar =  setInterval(()=>{
+//     this.setState({
+//     numero:this.state.numero +1
+// })},1000);
+// this.parar = () => {
+//     clearInterval(parar)
+// }
 
-    // // ---------
+// // ---------
 
-    // // Boatao resetar
-    // resetar = () => {
-    //     this.setState({
-    //         numero: 0
-    //     })
-    // }
+// // Boatao resetar
+// resetar = () => {
+//     this.setState({
+//         numero: 0
+//     })
+// }
 
-    //exemplo mudando a cor da body apos 2s e adiconando valor na prop nome
-    //setTimeOut: executa funcao depois de um tempo determinado, nao se repete
+//exemplo mudando a cor da body apos 2s e adiconando valor na prop nome
+//setTimeOut: executa funcao depois de um tempo determinado, nao se repete
 //     teste = () => {
 //         setTimeout(() => {
 //             document.body.style.backgroundColor = "orange"
@@ -508,47 +508,129 @@
 // };
 // export default App
 
+// REVISADO
+//------------------------------------------------------------
+//S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
+//------------------------------------------------------------
+//AULA 03/03
+// import React, { Component } from 'react';
+// import styled from "styled-components";
+
+// const Btn = styled.button`
+// background-color:  green;
+// `
+// class Contador2 extends Component {
+
+//     state = {
+//         numero: 0,
+//         msg: "oi",
+//         nome: "Oi"
+//     }
+
+//     //   contador limitado
+//     adicionar = () => {
+//         if (this.state.numero < 10) {
+//             this.setState({
+//                 numero: this.state.numero + 1
+//             })
+//         };
+
+//         // remover = () => {
+//         //     if (this.state.numero > 0) {
+//         //         this.setState({
+//         //             numero: this.state.numero + 1
+//         //         })
+//         //     }
+//     }
+//     render(){
+//                 return(
+//                    <div>
+//                    <h1> {this.state.numero}</h1>
+//                    <Btn onClick={this.adicionar}> + </Btn>
+//                    <Btn> + </Btn>
+//                    </div>
+//                 )
+//             }
+// }export default Contador2
+
+
+
+
+
+
 //NÃO REVISADO
 //------------------------------------------------------------
 //S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
 //------------------------------------------------------------
 //AULA 03/03
-import React, { Component } from 'react';
-import styled from "styled-components";
 
-const Btn = styled.button`
-background-color:  green;
-`
-class Contador2 extends Component {
+
+import React, { Component } from 'react';
+class AulaInputInterativo extends Component {
 
     state = {
-        numero: 0,
-        msg: "oi",
-        nome: "Oi"
+        tarefa: "",//recebe o que for digitado no input.tarefa vai ser reservado pra guardar o que digitarmos no input
+        lista: []// guarda todos dados toda vez q a gente clicar em adicionar nova tarefa
+    };
+
+    //     handleChange =funcao que recebe um evento como parametro (e) (event), onde atravez dele conseguimos pegar o valor do inptu
+
+    handleChange = (e) => {
+        this.setState({
+            tarefa: e.target.value //event vai mirar no input e retornar o valor dele que for digitado
+        });
     }
 
-    //   contador limitado
+    //nao adicionar itens se o input tiver vazio
     adicionar = () => {
-        if (this.state.numero < 10) {
-            this.setState({
-                numero: this.state.numero + 1
-            })
-        };
+        if (this.state.tafera === "") {
+            return;
+        }
 
-        // remover = () => {
-        //     if (this.state.numero > 0) {
-        //         this.setState({
-        //             numero: this.state.numero + 1
-        //         })
-        //     }
+        this.setState({
+            //concat - preciso espeficiar que vou passar um objeto para uma array
+            lista: this.state.lista.concat({
+                tarefa: this.state.tarefa, //nova tarefa
+                id: Math.random() // cria um id específico automatico para cada item da array de 0 até 1 ex: 0.3, 0.123, 0.11223, 0.10.
+            }),
+            tarefa: "" //forma de retonra o intup vazio após escrever
+        });
+    };
+
+
+    //filter
+    //parametro recebe a id da nossa tarefa itens, e cada iten tem sua id
+    apagar = (id) => {
+        this.setState({
+            lista: this.state.lista.filter((item) => {
+                return item.id !== id; //compara os id's se for diferente, ele guarda numa outra lista
+            })
+        })
     }
-    render(){
-                return(
-                   <div>
-                   <h1> {this.state.numero}</h1>
-                   <Btn onClick={this.adicionar}> + </Btn>
-                   <Btn> + </Btn>
-                   </div>
-                )
-            }
-}export default Contador2
+
+
+
+};
+render()
+{ 
+    return (
+        <div>
+            <h1>Lista  </h1>
+            <input value={this.state.tarefa} onChange={this.handleChange} />
+            {/* value pega o valor do input */}
+            {/* onChange evento de mudanca */}
+            <button onClick={this.adiconar}> add </button>
+            <ol>{this.state.lista.map((item) => (
+                <li>
+                    {item.tarefa}
+                    {/* //butao para exluir */}
+                    {/* //funcao de callback, dentro do evento de click. Assim conseguimsio chamar a funcao   */}
+                    <button onClick={() => { this.apagar(item.id) }}> x </button>
+                </li>,
+               
+            ))}</ol>
+        </div>
+    );
+}
+
+export default AulaInputInterativo;
