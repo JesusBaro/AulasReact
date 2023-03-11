@@ -565,72 +565,224 @@
 //AULA 03/03
 
 
-import React, { Component } from 'react';
-class AulaInputInterativo extends Component {
+// import React, { Component } from 'react';
+// class AulaInputInterativo extends Component {
 
-    state = {
-        tarefa: "",//recebe o que for digitado no input.tarefa vai ser reservado pra guardar o que digitarmos no input
-        lista: []// guarda todos dados toda vez q a gente clicar em adicionar nova tarefa
-    };
+//     state = {
+//         tarefa: "",//recebe o que for digitado no input.tarefa vai ser reservado pra guardar o que digitarmos no input
+//         lista: []// guarda todos dados toda vez q a gente clicar em adicionar nova tarefa
+//     };
 
-    //     handleChange =funcao que recebe um evento como parametro (e) (event), onde atravez dele conseguimos pegar o valor do inptu
+//     //     handleChange =funcao que recebe um evento como parametro (e) (event), onde atravez dele conseguimos pegar o valor do inptu
 
-    handleChange = (e) => {
-        this.setState({
-            tarefa: e.target.value //event vai mirar no input e retornar o valor dele que for digitado
-        });
-    }
+//     handleChange = (e) => {
+//         this.setState({
+//             tarefa: e.target.value //event vai mirar no input e retornar o valor dele que for digitado
+//         });
+//     }
 
-    //nao adicionar itens se o input tiver vazio
-    adicionar = () => {
-        if (this.state.tafera === "") {
-            return;
-        }
+//     //nao adicionar itens se o input tiver vazio
+//     adicionar = () => {
+//         if (this.state.tafera === "") {
+//             return;
+//         }
 
-        this.setState({
-            //concat - preciso espeficiar que vou passar um objeto para uma array
-            lista: this.state.lista.concat({
-                tarefa: this.state.tarefa, //nova tarefa
-                id: Math.random() // cria um id específico automatico para cada item da array de 0 até 1 ex: 0.3, 0.123, 0.11223, 0.10.
-            }),
-            tarefa: "" //forma de retonra o intup vazio após escrever
-        });
-    };
-
-
-    //filter
-    //parametro recebe a id da nossa tarefa itens, e cada iten tem sua id
-    apagar = (id) => {
-        this.setState({
-            lista: this.state.lista.filter((item) => {
-                return item.id !== id; //compara os id's se for diferente, ele guarda numa outra lista
-            })
-        })
-    }
+//         this.setState({
+//             //concat - preciso espeficiar que vou passar um objeto para uma array
+//             lista: this.state.lista.concat({
+//                 tarefa: this.state.tarefa, //nova tarefa
+//                 id: Math.random() // cria um id específico automatico para cada item da array de 0 até 1 ex: 0.3, 0.123, 0.11223, 0.10.
+//             }),
+//             tarefa: "" //forma de retonra o intup vazio após escrever
+//         });
+//     };
 
 
+//     //filter
+//     //parametro recebe a id da nossa tarefa itens, e cada iten tem sua id
+//     apagar = (id) => {
+//         this.setState({
+//             lista: this.state.lista.filter((item) => {
+//                 return item.id !== id; //compara os id's se for diferente, ele guarda numa outra lista
+//             })
+//         })
+//     }
 
-};
-render()
-{ 
-    return (
-        <div>
-            <h1>Lista  </h1>
-            <input value={this.state.tarefa} onChange={this.handleChange} />
-            {/* value pega o valor do input */}
-            {/* onChange evento de mudanca */}
-            <button onClick={this.adiconar}> add </button>
-            <ol>{this.state.lista.map((item) => (
-                <li>
-                    {item.tarefa}
-                    {/* //butao para exluir */}
-                    {/* //funcao de callback, dentro do evento de click. Assim conseguimsio chamar a funcao   */}
-                    <button onClick={() => { this.apagar(item.id) }}> x </button>
-                </li>,
+
+
+// };
+// render()
+// { 
+//     return (
+//         <div>
+//             <h1>Lista  </h1>
+//             <input value={this.state.tarefa} onChange={this.handleChange} />
+//             {/* value pega o valor do input */}
+//             {/* onChange evento de mudanca */}
+//             <button onClick={this.adiconar}> add </button>
+//             <ol>{this.state.lista.map((item) => (
+//                 <li>
+//                     {item.tarefa}
+//                     {/* //butao para exluir */}
+//                     {/* //funcao de callback, dentro do evento de click. Assim conseguimsio chamar a funcao   */}
+//                     <button onClick={() => { this.apagar(item.id) }}> x </button>
+//                 </li>,
                
-            ))}</ol>
-        </div>
+//             ))}</ol>
+//         </div>
+//     );
+// }
+
+// export default AulaInputInterativo;
+
+
+
+//NÃO REVISADO
+//------------------------------------------------------------
+//S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
+//------------------------------------------------------------
+//AULA 10/03
+
+// import React, { Component } from "react";
+
+// class Todo extends Component {
+//   state = {
+//     fruta: "", //criei essa propriedade chamada fruta, aqui vai ser receber tudo que for digitado no meu input.
+//     listaDeFrutas: [] //crei uma lista/array, que vai receber  todas as minhas frutas quando eu clicar no botão "Adicione essa fruta na lista"
+//   };
+
+//   //A função handleChange recebe um evento como parâmetro (e) ou (event), onde através dele que consiguimos pegar o valor atual do input.
+
+//   //Função do input, quando tiver uma mudança no input execute essa função handleChange*
+//   handleChange = (event) => {
+//     this.setState({
+//       fruta: event.target.value //pega o valor atual do input
+//       //event: é como se fosse o abridor do input
+//       //target (alvo) ou seja, abre o input, mira na fruta e pega ela.
+//     });
+//   };
+
+//   //Função pra adicionar com o click do botão "Adicione essa fruta na lista" handleClick*
+//   handleClick = () => {
+//     //Condição para o input não adicionar vazio
+
+//     //Se a propriedade fruta for estritamente === igual a vazio retorna pra mim o valor inicial ""
+//     if (this.state.fruta === "") {
+//       return;
+//     }
+
+//     this.setState({
+//       //Concat (concatenar/juntar): Toda a fruta que eu adicionar/inserir no meu input, ela vai se juntar com a fruta anterior. uva se junta com o morango, que se junta com o abacaxi, que se junta com a amora...
+//       listaDeFrutas: this.state.listaDeFrutas.concat({
+//         fruta: this.state.fruta, //minha nova fruta vai se juntar com a antiga
+//         id: Math.random() //id, gera um número aleatório para cada fruta/item adicionado. Cada um vai ter a sua própria identidade.
+//       }),
+//       fruta: "" //Toda vez que eu adicionar uma fruta no meu input, vai limpar o input. Voltar ao valor inicial do state, no caso, vazio ""
+//     });
+//   };
+
+//   //O nosso ID vai vir como parâmetro dessa função, alegando que essa função vai se referenciar ao ID de cada item adicionado.
+//   ApagarEssaFruta = (id) => {
+//     this.setState({
+//       //Esse filter vai servir para filtrar as identidades ID, ou seja, acesse somente pela a ID.
+//       listaDeFrutas: this.state.listaDeFrutas.filter((item) => {
+//         return item.id !== id; //Verifica se o valor é diferente do que está sendo digitado no input, caso sim, continue mostrando a listaDeFrutas.
+//       })
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <>
+//         <h2> Lista de Frutas </h2>
+
+//         <input
+//           onChange={this.handleChange}
+//           placeholder="Qual fruta deseja?"
+//           value={this.state.fruta}
+//         />
+
+//         {/* Input para receber as frutas */}
+//         {/* onChange, evento de mudança, execute a função quando ocorrer uma mudança, no caso, mudança no input. */}
+//         {/* value: acessa o meu state, a propriedade value e retorna o valor inicial dela "" */}
+
+//         {/* Evento de click, execute a função quando eu clicar nela */}
+//         {/* Botão para adicionar as frutas em uma lista */}
+//         <button onClick={this.handleClick}>
+//           {" "}
+//           Adicione essa fruta na lista{" "}
+//         </button>
+
+//         {/* Mapeando a listaDeFrutas[] e pedindo para retornar em um item de lista <li> a fruta digitada */}
+//         <ul>
+//           {this.state.listaDeFrutas.map((item) => (
+//             <>
+//               <li> {item.fruta} </li>
+//               <button
+//                 onClick={() => {
+//                   this.listaDeFrutas(item.id);
+//                 }}
+//               >
+//                 {" "}
+//                 Apagar essa fruta{" "}
+//               </button>
+//               {/* Botão para apagar uma fruta da minha lista */}
+//             </>
+//           ))}
+//         </ul>
+//       </>
+//     );
+//   }
+// }
+
+// export default Todo;
+
+//------------------------
+
+
+//filter
+import React, { Component } from "react";
+
+class App extends Component {
+  state = {
+    nomes: [
+      "Carol",
+      "Biel",
+      "Grazy",
+      "Heitor",
+      "Jésus",
+      "Lucas",
+      "Nath",
+      "Thiago",
+      "Yuri",
+      "Brendon"
+    ],
+    novaLista: []
+  };
+
+  procurar = () => {
+    this.setState({
+      novaLista: this.state.nomes.filter((item) => item.includes("L"))
+      //includes: verifica o valor que for digitado
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <h1> Exiba nomes que começa com a letra L </h1>
+        <button onClick={this.procurar}> Nome com L </button>
+
+        <ul>
+          {this.state.novaLista.map((item) => (
+            <li> {item} </li>
+          ))}
+        </ul>
+      </>
     );
+  }
 }
 
-export default AulaInputInterativo;
+export default App;
+
+
