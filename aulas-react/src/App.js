@@ -332,7 +332,6 @@
 // }
 // export default ContadorAutomatizado;
 
-//NÃO REVISADO
 //------------------------------------------------------------
 //S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
 //------------------------------------------------------------
@@ -553,12 +552,6 @@
 //             }
 // }export default Contador2
 
-
-
-
-
-
-//NÃO REVISADO
 //------------------------------------------------------------
 //S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
 //------------------------------------------------------------
@@ -637,7 +630,6 @@
 
 
 
-//NÃO REVISADO
 //------------------------------------------------------------
 //S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2-S2
 //------------------------------------------------------------
@@ -741,48 +733,50 @@
 
 
 //filter
-import React, { Component } from "react";
+// import React, { Component } from "react";
 
-class App extends Component {
-  state = {
-    nomes: [
-      "Carol",
-      "Biel",
-      "Grazy",
-      "Heitor",
-      "Jésus",
-      "Lucas",
-      "Nath",
-      "Thiago",
-      "Yuri",
-      "Brendon"
-    ],
-    novaLista: []
-  };
+// class App extends Component {
+//   state = {
+//     nomes: [
+//       "Carol",
+//       "Biel",
+//       "Grazy",
+//       "Heitor",
+//       "Jésus",
+//       "Lucas",
+//       "Nath",
+//       "Thiago",
+//       "Yuri",
+//       "Brendon"
+//     ],
+//     novaLista: []
+//   };
 
-  procurar = () => {
-    this.setState({
-      novaLista: this.state.nomes.filter((item) => item.includes("L"))
-      //includes: verifica o valor que for digitado
-    });
-  };
+//   procurar = () => {
+//     this.setState({
+//       novaLista: this.state.nomes.filter((item) => item.includes("L"))
+//       //includes: verifica o valor que for digitado
+//     });
+//   };
 
-  render() {
-    return (
-      <>
-        <h1> Exiba nomes que começa com a letra L </h1>
-        <button onClick={this.procurar}> Nome com L </button>
+//   render() {
+//     return (
+//       <>
+//         <h1> Exiba nomes que começa com a letra L </h1>
+//         <button onClick={this.procurar}> Nome com L </button>
 
-        <ul>
-          {this.state.novaLista.map((item) => (
-            <li> {item} </li>
-          ))}
-        </ul>
-      </>
-    );
-  }
-}
+//         <ul>
+//           {this.state.novaLista.map((item) => (
+//             <li> {item} </li>
+//           ))}
+//         </ul>
+//       </>
+//     );
+//   }
+// }
 
-export default App;
+// export default App;
 
+///// aula 13/03
 
+//falta aula dia 15 e dia 17
