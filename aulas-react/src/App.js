@@ -778,22 +778,87 @@
 // export default App;
 
 ///// aula 13/03
+// pros e componentizacao
 
-//falta aula dia 15 e dia 17
-
-
-
+// aula dia 15 e dia 17 reposição 21/03 -- didupdate e ternario
 
 
+import React, { Component } from "react";
+import styled from "styled-components"
+const BoxBtn = styled.div`
+  width: 50%;
+  border: solid red;
+  text-align: center;
+`;
+class App extends Component {
+
+//precisa de state pois ele é onde manipulamos os dados que queremos
+    state= {
+        luz: `luz`,
+        ligado: true, //exemplo usado no componentDidUpdate // a div está aparecendo pois ela está asocciada a esta prop e seu valor, sendo true ele renderiza, sendo falso nao renderiza precisando ter seu valor invertido (! = not - operador lógico) 
+        // ligado: false, // estado falso para inverter e sendo true  a div  aparece 
+        tituloOne:"desligar",
+        tituloTwo:"acender"
+    }
+
+    apagar = () =>{
+        this.setState({
+            ligado: this.state.ligado,
+            luz: "apagada",
+            tituloOne:"luz desligada",
+            // tituloTwo:"verde"// modificando o nome do outro botao
+        });
+       document.body.style.background = "black";
+       document.body.style.color= "white"
+    }
+
+    // componentDidUpdate(){
+    // document.body.style.background= "black";
+    // document.body.style.color= "white"
+    // }
 
 
+    // aqui o componentDidUpdate está vigiando alguma alteração na render para poder fazer uma verificação (se a prop ligado do state for true) e apartir daí 
+    // componentDidUpdate(){
+    //     this.state.ligado == true ?  document.body.style.background = "purple" : document.body.style.background = "yellow" 
+    //     // document.body.style.background = "black";
+    //     // document.body.style.color= "white"
+    //     }
 
 
+        //ternario se escreve em uma linha
+        acender =() =>{
+            this.state.ligado == true ?  document.body.style.background = "pink" : document.body.style.background = "grey" //valor true = pink, valor false = grey
+            this.setState({
+                // ligado: !this.state.ligado, // a div  aparece , pois esta associada com o valor invertido (de false para true), sendo true ele renderiza a div // alem por inverter seu valor inverte tambem a cor pois 
+                ligado: this.state.ligado, // por nao interver o valor ela nao troca a cor, pois sendo o valor true a cor sera sempre pink
+                luz: "luz acesa",
+                tituloTwo:"luz acesa",// modificando o nome do outro botao
+            });
+
+            document.body.style.color= "red";
+        }
 
 
+    render() {
+        return (
+          <>
+            <h1> interrupitor condicional</h1>
+            
+            <h2>{this.state.luz}</h2>
+            <button onClick={this.acender}> {this.state.tituloTwo}</button>
 
-
-
+            <button onClick={this.apagar}> {this.state.tituloOne}</button>
+         
+            {this.state.ligado && 
+            <BoxBtn >oi</BoxBtn>}
+            {/* aqui ele conecta a condição da propriedade a div (usado na ) , apos a condiçao ser aceita (a de que a propriedade ligado seja true ele exibe a div) */}
+         
+          </>
+        );
+      }
+    }
+    export default App;
 
 
 
@@ -805,83 +870,83 @@
 
 // https://codesandbox.io/s/api-noite-20-03-11280f?file=/src/style.js
 
-import React, { Component } from "react";
-import * as S from "./style.js";
-//axios permite uma interaçao com serviço 
-//npm install axios 
-//importar biblioteca axios 
-import axios from "axios";
+// import React, { Component } from "react";
+// import * as S from "./style.js";
+// //axios permite uma interaçao com serviço 
+// //npm install axios 
+// //importar biblioteca axios 
+// import axios from "axios";
 
-// Método .create   acessa o link da biblioteca com o metoddo create, serve para guardar a url da base da api que estamos usando
-const Api = axios.create({
-baseURL : "https://rickandmortyapi.com/api/character"
-});
+// // Método .create   acessa o link da biblioteca com o metoddo create, serve para guardar a url da base da api que estamos usando
+// const Api = axios.create({
+// baseURL : "https://rickandmortyapi.com/api/character"
+// });
 
-class App extends Component {
+// class App extends Component {
 
-    state ={
-        informacoes: []
-    }
+//     state ={
+//         informacoes: []
+//     }
 
-//função para trazer as informações da api
-// função asincrona - async - que não ocorre ou se efetiva ao mesmo tempo
-//await - aguarda, espera 
-//get - pegar 
-//uma funçao assincrona vai esperar pela resposta da promessa..
-//promessa - promessa de que algo ira acontecer,dando certo ou não..
+// //função para trazer as informações da api
+// // função asincrona - async - que não ocorre ou se efetiva ao mesmo tempo
+// //await - aguarda, espera 
+// //get - pegar 
+// //uma funçao assincrona vai esperar pela resposta da promessa..
+// //promessa - promessa de que algo ira acontecer,dando certo ou não..
 
 
-    PegarPersonagem = async () =>{
-        const resposta = await Api.get();
-        //essa varia roda o await que vai esperar a promessa ser retornada, ou seja, promessa = api.
+//     PegarPersonagem = async () =>{
+//         const resposta = await Api.get();
+//         //essa varia roda o await que vai esperar a promessa ser retornada, ou seja, promessa = api.
 
-        console.log(resposta.data.results); //pra ver se ta funcionando. mostrando os dados da api
+//         console.log(resposta.data.results); //pra ver se ta funcionando. mostrando os dados da api
 
-        // nova variavel que acessa e mapeia a seccao de result onde estao guardados os personagem
-        // acessa a resposta
-        const itens = resposta.data.results.map((item) =>{
-            return{
-                ...item
-                //spread ... : usado quando todos so objetos presicam ser incluidos em um novo array (lista)
-            }
-        })
-        //trazendo a Api para dentro da array informaçoes 
-        this.setState({
-            informacoes : itens
+//         // nova variavel que acessa e mapeia a seccao de result onde estao guardados os personagem
+//         // acessa a resposta
+//         const itens = resposta.data.results.map((item) =>{
+//             return{
+//                 ...item
+//                 //spread ... : usado quando todos so objetos presicam ser incluidos em um novo array (lista)
+//             }
+//         })
+//         //trazendo a Api para dentro da array informaçoes 
+//         this.setState({
+//             informacoes : itens
 
-            // manipulando  o estado a arrray q vai receber os itens da api
+//             // manipulando  o estado a arrray q vai receber os itens da api
 
-        })
-    };
+//         })
+//     };
   
-    componentDidMount(){
-        this.PegarPersonagem() //ativando a função e deixando ela sempre pre renderizada
-    };
+//     componentDidMount(){
+//         this.PegarPersonagem() //ativando a função e deixando ela sempre pre renderizada
+//     };
 
 
-  render() {
-    return (
-      <>
-      <S.GlobalStyle/>
-       <h1>oi</h1>
-       {/* mapeamento das informaçoes e pegar o qeu queremos */}
+//   render() {
+//     return (
+//       <>
+//       <S.GlobalStyle/>
+//        <h1>oi</h1>
+//        {/* mapeamento das informaçoes e pegar o qeu queremos */}
 
-       <div>
-        {this.state.informacoes.map((item) =>(
-         <div>
-            <h2> {item.name}</h2>
-                <img src= {item.image} alt = ""/>
-                <h3>{item.status}</h3>
-                <h3>{item.gender}</h3>
-                <h3>{item.species}</h3>
+//        <div>
+//         {this.state.informacoes.map((item) =>(
+//          <div>
+//             <h2> {item.name}</h2>
+//                 <img src= {item.image} alt = ""/>
+//                 <h3>{item.status}</h3>
+//                 <h3>{item.gender}</h3>
+//                 <h3>{item.species}</h3>
 
-         </div>
+//          </div>
     
-        ))}
-       </div>
-      </>
-    );
-  }
-}
+//         ))}
+//        </div>
+//       </>
+//     );
+//   }
+// }
 
-export default App;
+// export default App;
